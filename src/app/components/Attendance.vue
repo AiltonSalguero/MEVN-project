@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="Attendancse">
     <nav class="navbar navbar-light bg-light">
       <a class="navbar-brand" href="/">MEVN Tasks</a>
     </nav>
@@ -10,7 +10,7 @@
             <div class="card-body">
               <form @submit.prevent="sendTask">
                 <div class="form-group">
-                  <input type="text" v-model="task.title" class="form-control" placeholder="Insert A Task">
+                  <input v-model="task.title" class="input is-rounded" type="text" placeholder="Insert A Task">
                 </div>
                 <div class="form-group">
                   <textarea v-model="task.description" cols="30" rows="10" placeholder="Insert A Description" class="form-control"></textarea>
