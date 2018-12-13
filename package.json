@@ -6,7 +6,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "nodemon src/index.js",
-        "webpack": "webpack --mode development"
+        "webpack": "webpack --mode development --watch"
     },
     "repository": {
         "type": "git",
@@ -20,16 +20,24 @@
     },
     "homepage": "https://github.com/Kyssnar/MEVN-project#readme",
     "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "connect-flash": "^0.1.1",
         "express": "^4.16.4",
+        "express-handlebars": "^3.0.0",
+        "express-session": "^1.15.6",
+        "method-override": "^3.0.0",
         "mongoose": "^5.3.16",
         "morgan": "^1.9.1",
         "nodemon": "^1.18.8",
+        "passport": "^0.4.0",
+        "passport-local": "^1.0.0",
         "vue": "^2.5.21"
     },
     "devDependencies": {
-        "babel-core": "next",
-        "babel-loader": "^7.1.5",
-        "babel-preset-env": "^1.7.0",
+        "babel": "^6.23.0",
+        "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.3",
+        "babel-loader": "^8.0.4",
         "vue-loader": "^15.4.2",
         "vue-template-compiler": "^2.5.21",
         "webpack": "^4.27.1",
