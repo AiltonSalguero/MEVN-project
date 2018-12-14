@@ -1,5 +1,5 @@
 <template>
-    <section class="hero is-success is-fullheight">
+    <section class="hero is-success is-fullheight" style="background: url('./img/login.jpg')">
         <div class="hero-body">
             <div class="container has-text-centered">
                 <div class="column is-4 is-offset-4">
@@ -7,7 +7,7 @@
                     <p class="subtitle has-text-grey">Please login to proceed.</p>
                     <div class="box">
                         <figure class="avatar">
-                            <img src="https://placehold.it/128x128">
+                            <img src="/img/logo.png">
                         </figure>
                         <form>
                             <div class="field">
@@ -52,6 +52,6 @@
     }
 </script>
 
-<style scoped>
-    
+<style src="./../../public/css/login.css">
+	
 </style>

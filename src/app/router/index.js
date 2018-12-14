@@ -24,9 +24,9 @@ export const router = new VueRouter({
             component: Register
         },
         {
-            path: '/Welcome',
-            name: 'Welcome',
-            component: Welcome
+            path: '/Attendance',
+            name: 'Attendance',
+            component: Attendance
         }
     ]
 })
