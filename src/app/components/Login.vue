@@ -1,5 +1,5 @@
 <template>
-    <section class="hero is-success is-fullheight" style="background: url('./img/login.jpg')">
+    <section class="hero is-success is-fullheight" style="background: url('../img/login.jpg')">
         <div class="hero-body">
             <div class="container has-text-centered">
                 <div class="column is-4 is-offset-4">
@@ -27,7 +27,7 @@
                       Remember me
                     </label>
                             </div>
-                            <button class="button is-block is-info is-large is-fullwidth">Login</button>
+                            <button class="button is-block is-info is-large is-fullwidth" v-on:click="toAttendance()">Login</button>
                         </form>
                     </div>
                     <p class="has-text-grey">
@@ -47,6 +47,16 @@
         data() {
             return {
                 title: 'Login'
+            }
+        },
+
+        methods: {
+            toAttendance(){
+                let route = this.$router.resolve({
+					path: '/attendance'
+				});
+				// let route = this.$router.resolve('/link/to/page'); // This also works.
+				window.open(route.href, '_blank');
             }
         }
     }

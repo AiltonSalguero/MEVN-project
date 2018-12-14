@@ -1,134 +1,143 @@
 <template>
-  <div class="Attendancse">
-    <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" href="/">MEVN Tasks</a>
+  <section class="hero is-fullheight" style="background-image: url(../img/attendance.png)">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="../">
+            <img src="img/logo.png" alt="Logo">
+          </a>
+          <span class="navbar-burger burger" data-target="navbarMenu"></span>
+        </div>
+        <div id="navbarMenu" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item is-active" v-on:click="sendReport()">Inicio</a>
+            <a class="navbar-item" v-on:click="sendReport()">Reportes</a>
+  
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">Cuenta</a>
+              <div class="navbar-dropdown">
+                <a class="nav-item" v-on:click="toProfile()">
+                  <span class="icon">
+            									<i class="fas fa-sign-in-alt"></i>
+            								</span>
+                  <span>Perfil</span>
+                </a>
+                <hr class="navbar-divider">
+                <a class="nav-item" v-on:click="toHome()">
+                  <span class="icon">
+            									<i class="fas fa-door-open"></i>
+            									</span>
+                  <span>Salir</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </nav>
-    <div class="container">
-      <div class="row pt-5">
-        <div class="col-md-5">
-          <div class="card">
-            <div class="card-body">
-              <form @submit.prevent="sendTask">
-                <div class="form-group">
-                  <input v-model="task.title" class="input is-rounded" type="text" placeholder="Insert A Task">
-                </div>
-                <div class="form-group">
-                  <textarea v-model="task.description" cols="30" rows="10" placeholder="Insert A Description" class="form-control"></textarea>
-                </div>
   
-                <button class="btn btn-primary btn-block">Send</button>
-  
-                <button class="btn btn-primary btn-block">Edit</button>
-  
-              </form>
+    <div class="columns">
+      <div class="column is-one-third">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title">
+              {{task.title}}
+            </p>
+            <a href="#" class="card-header-icon" aria-label="more options">
+              <span class="icon">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+            </a>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+              <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
+              <br>
+              <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
             </div>
           </div>
-        </div>
-        <div class="col-md-5">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>Task</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="task of tasks">
-                <td>{{task.title}}</td>
-                <td>{{task.description}}</td>
-                <td>
-                  <button @click="deleteTask(task._id)" class="btn btn-danger">Delete</button>
-                  <button @click="editTask(task._id)" class="btn btn-secondary">
-                          Edit
-                        </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <footer class="card-footer">
+            <a href="#" class="card-footer-item">Save</a>
+            <a href="#" class="card-footer-item">Edit</a>
+            <a href="#" class="card-footer-item">Delete</a>
+          </footer>
         </div>
       </div>
-    </div>
-    <div class="row columns">
-      <div>
-        <div class="row columns">
-          <div class="column is-one-third">
-            <div class="card large">
-              <div class="card-image">
-                <figure class="image">
-                  <img src="https://images.unsplash.com/photo-1475778057357-d35f37fa89dd?dpr=1&auto=compress,format&fit=crop&w=1920&h=&q=80&cs=tinysrgb&crop=" alt="Image">
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-left">
-                    <figure class="image is-96x96">
-                      <img src="https://i.imgsafe.org/a4/a4bb9acc5e.jpeg" alt="Image">
-                    </figure>
-                  </div>
-                  <div class="media-content">
-                    <p class="title is-4 no-padding">Okinami</p>
-                    <p><span class="title is-6"><a href="http://twitter.com/#">@twitterid</a></span></p>
-                    <p class="subtitle is-6">Lead Developer</p>
-                  </div>
-                </div>
-                <div class="content">
-                  The Beast stumbled in the dark for it could no longer see the path. It started to fracture and weaken, trying to reshape itself into the form of metal. Even the witches would no longer lay eyes upon it, for it had become hideous and twisted.
-                  <div class="background-icon"><span class="icon-twitter"></span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card large">
-            <div class="card-image">
-              <figure class="image">
-                <img src="https://images.unsplash.com/photo-1475778057357-d35f37fa89dd?dpr=1&auto=compress,format&fit=crop&w=1920&h=&q=80&cs=tinysrgb&crop=" alt="Image">
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-left">
-                  <figure class="image is-96x96">
-                    <img src="https://i.imgsafe.org/a4/a4bb9acc5e.jpeg" alt="Image">
-                  </figure>
-                </div>
-                <div class="media-content">
-                  <p class="title is-4 no-padding">Okinami</p>
-                  <p><span class="title is-6"><a href="http://twitter.com/#">@twitterid</a></span></p>
-                  <p class="subtitle is-6">Lead Developer</p>
-                </div>
-              </div>
-              <div class="content">
-                The Beast stumbled in the dark for it could no longer see the path. It started to fracture and weaken, trying to reshape itself into the form of metal. Even the witches would no longer lay eyes upon it, for it had become hideous and twisted.
-                <div class="background-icon"><span class="icon-twitter"></span></div>
-              </div>
-            </div>
-          </div>
-        </div>
+  
+      <div class="container">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="task of tasks">
+              <td>{{user.firstname}}</td>
+              <td>{{user.lastname}}</td>
+              <td>
+                <button @click="deleteTask(task._id)" class="btn btn-danger">Delete</button>
+                <button @click="editTask(task._id)" class="btn btn-secondary">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+  
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
-  class Task {
-    constructor(title = '', description = '') {
-      this.title = title;
-      this.description = description;
-    }
-  }
+  import Task from '../../models/classes/Task.js';
+
   export default {
     data() {
       return {
+        //BORRAR DESPUES
         task: new Task(),
         tasks: [],
         edit: false,
-        taskToEdit: ''
+        taskToEdit: '',
+        //
+
+        //USER
+        //user: new User()
+
+
+        //Asistencias
+
+
       }
     },
     created() {
       this.getTasks();
     },
     methods: {
+
+      sendReport() {
+        //LLAMAR AL SERVIDOR
+        return true;
+      },
+  
+      toHome() {
+        let route = this.$router.resolve({
+          path: '/'
+        });
+        // let route = this.$router.resolve('/link/to/page'); // This also works.
+        window.open(route.href, '_blank');
+      },
+  
+      toLogin() {
+        let route = this.$router.resolve({
+          path: '/login'
+        });
+        // let route = this.$router.resolve('/link/to/page'); // This also works.
+        window.open(route.href, '_blank');
+      },
+  
       sendTask() {
         if (this.edit === false) {
           fetch('/api/tasks', {
