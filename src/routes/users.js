@@ -31,19 +31,9 @@ router.post('/', async(req, res) => {
     });
 }); //.post Crea un nuevo dato
 
-router.put('/', async(req, res) => {
-    //await User.findByIdAndUpdate(req.params.id, req.body); //Id, datos actuales
-    //res.json({ status: 'Tarea actualizada' })
-    var user = await User.findOne({
-        email: req.body.email,
-        password: req.body.password,
-    }, function(err, user) {
-        console.log('Error: ' + err, user);
-    })
-
-    if (user != null) {
-        console.log(req.body.email)
-    }
+router.put('/:id', async(req, res) => {
+    await Task.findByIdAndUpdate(req.params.id, req.body); //Id, datos actuales
+    res.json({ status: 'Tarea actualizada' })
 
 }); //.put actualiza los datos
 

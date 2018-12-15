@@ -18,15 +18,15 @@
               <div class="navbar-dropdown">
                 <a class="nav-item" v-on:click="toProfile()">
                   <span class="icon">
-            									<i class="fas fa-sign-in-alt"></i>
-            								</span>
+                									<i class="fas fa-sign-in-alt"></i>
+                								</span>
                   <span>Perfil</span>
                 </a>
                 <hr class="navbar-divider">
                 <a class="nav-item" v-on:click="toHome()">
                   <span class="icon">
-            									<i class="fas fa-door-open"></i>
-            									</span>
+                									<i class="fas fa-door-open"></i>
+                									</span>
                   <span>Salir</span>
                 </a>
               </div>
@@ -45,14 +45,14 @@
             </p>
             <a href="#" class="card-header-icon" aria-label="more options">
               <span class="icon">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                  </span>
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                      </span>
             </a>
           </header>
           <div class="card-content">
             <div class="content">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-              <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
+              {{userId}}
+              <a href="#">{{userId}}</a>. <a href="#">#css</a> <a href="#">#responsive</a>
               <br>
               <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
             </div>
@@ -93,7 +93,8 @@
 <script>
   import Task from '../../models/classes/Task.js';
   import User from '../../models/classes/User.js';
-
+  
+  
   export default {
     data() {
       return {
@@ -103,21 +104,23 @@
         edit: false,
         taskToEdit: '',
         //
-
         //USER
         user: new User(),
-
-
+        userId:'',
         //Asistencias
-
-
       }
+    },
+    props: {
+      userId: String,
+    },
+    created() {
+      this.getUsers();
     },
     created() {
       this.getTasks();
     },
     methods: {
-
+  
       sendReport() {
         //LLAMAR AL SERVIDOR
         return true;

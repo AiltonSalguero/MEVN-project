@@ -1,48 +1,41 @@
 <template>
 	<section class="hero is-fullheight" style="background: url('./img/office.jpg')">
+		
 		<nav class="navbar">
 			<div class="container">
 				<div class="navbar-brand">
 					<a class="navbar-item" href="../">
-						<img src="img/logo.png" alt="Logo">
+						<img src="http://bulma.io/images/bulma-type-white.png" alt="Logo">
 					</a>
 					<span class="navbar-burger burger" data-target="navbarMenu">
-	                                <span></span>
+	                                    <span></span>
 					<span></span>
 					<span></span>
 					</span>
 				</div>
 				<div id="navbarMenu" class="navbar-menu">
 					<div class="navbar-end">
-						<a class="navbar-item is-active">
-	                                    Home
-	                                </a>
-						<a class="navbar-item">
-	                                    Help
-	                                </a>
-						<div class="navbar-item has-dropdown is-hoverable">
-							<a class="navbar-link">Cuenta</a>
-							<div class="navbar-dropdown">
-								<a class="nav-item" v-on:click="toLogin()">
-									<span class="icon">
-									<i class="fas fa-sign-in-alt"></i>
-									</span>
-									<span>Login</span>
-								</a>
-								<hr class="navbar-divider">
-								<a class="nav-item" v-on:click="toRegister()">
-									<span class="icon">
-									<i class="fas fa-door-open"></i>
-									</span>
-									<span>Registro</span>
-								</a>
-							</div>
-						</div>
+						<span class="navbar-item">
+	                                        <a class="button is-white is-outlined" v-on:click="toLogin()" href="#">
+	                                            <span class="icon">
+	                                                <i class="fa fa-home"></i>
+	                                            </span>
+						<span>Iniciar Sesion</span>
+						</a>
+						</span>
+	
+						<span class="navbar-item">
+	                                        <a class="button is-white is-outlined" v-on:click="toRegister()" href="#">
+	                                            <span class="icon">
+	                                                <i class="fas fa-sign-in-alt"></i>
+	                                            </span>
+						<span>Registrarse</span>
+						</a>
+						</span>
 					</div>
 				</div>
 			</div>
 		</nav>
-		
 		<div class="hero-body">
 			<div class="container has-text-centered">
 				<div class="slider-content animated zoomIn">
@@ -53,9 +46,35 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="hero-body">
+                        <div class="container has-text-centered">
+                            <div class="column is-6 is-offset-3">
+                                <h1 class="title">
+                                    Coming Soon
+                                </h1>
+                                <h2 class="subtitle">
+                                    $this is the best software platform for running an internet business. We handle billions of dollars every year for forward-thinking businesses around the world.
+                                </h2>
+                                <div class="box">
+                                    <div class="field is-grouped">
+                                        <p class="control is-expanded">
+                                            <input class="input" type="text" placeholder="Enter your email">
+                                        </p>
+                                        <p class="control">
+                                            <a class="button is-info">
+                                                Notify Me
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 	
 	</section>
 </template>
+
 
 <script>
 	export default {

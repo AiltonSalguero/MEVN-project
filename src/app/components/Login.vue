@@ -25,9 +25,9 @@
                             </div>
                             <div class="field">
                                 <label class="checkbox">
-                                                              <input type="checkbox">
-                                                              Remember me
-                                                            </label>
+                                                                              <input type="checkbox">
+                                                                              Remember me
+                                                                            </label>
                             </div>
                             <button class="button is-block is-info is-large is-fullwidth" v-on:click="validUser(user.email, user.password)">Login</button>
                         </form>
@@ -46,6 +46,8 @@
 <script>
     import Task from '../../models/classes/Task.js';
     import User from '../../models/classes/User.js';
+    import Register from './Register.vue'
+    
     export default {
         name: 'Login',
         data() {
@@ -53,22 +55,14 @@
                 title: 'Login',
                 users: [],
                 user: new User(),
-    
-    
             }
         },
-        created() {
-            this.getUsers();
+    
+        components: {
+            appRegister: Register,
         },
     
         methods: {
-            getUsers() {
-                fetch('/api/users')
-                    .then(res => res.json())
-                    .then(data => {
-                        this.users = data;
-                    });
-            },
             validUser(email, password) {
                 fetch('/api/users')
                     .then(res => res.json())
@@ -78,30 +72,25 @@
                         //let idUsuario = this.users.find(user => user.email == email)._id;
     
                         var found = this.users.find(function(element) {
-                            return element.email == 'ailton@hotmail.com';
+                            return element.email == email && element.password == password;
                         });
-                        console.log('f',found)
+                        if (found != null) {
+                            this.userId = found.id;
+                            this.toAttendance()
     
-                        fetch('/api/users', {
-                            method: 'PUT',
-                            body: JSON.stringify({
-                                email: email,
-                                password: password
-                            })
-                        })
+                        } else {
+                            alert("Usuario no valido.")
+                        }
                         //console.log(idUsuario)
                     });
                 //this.getUsers();
             },
-            toAttendance() {
-                if (this.validUser()) {
-                    let route = this.$router.resolve({
-                        path: '/attendance'
-                    });
-                    window.open(route.href, '_blank');
-                } else {
     
-                }
+            toAttendance() {
+                let route = this.$router.resolve({
+                    path: '/attendance'
+                });
+                window.open(route.href, '_blank');
     
             }
         }
