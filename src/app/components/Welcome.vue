@@ -1,48 +1,82 @@
 <template>
-	<section class="hero is-success is-fullheight">
+	<section class="hero is-fullheight" style="background: url('./img/office.jpg')">
+		<nav class="navbar">
+			<div class="container">
+				<div class="navbar-brand">
+					<a class="navbar-item" href="../">
+						<img src="http://bulma.io/images/bulma-type-white.png" alt="Logo">
+					</a>
+					<span class="navbar-burger burger" data-target="navbarMenu">
+	                                    <span></span>
+					<span></span>
+					<span></span>
+					</span>
+				</div>
+				<div id="navbarMenu" class="navbar-menu">
+					<div class="navbar-end">
+						<span class="navbar-item">
+	                                        <a class="button is-white is-outlined" v-on:click="toLogin()" href="#">
+	                                            <span class="icon">
+	                                                <i class="fa fa-home"></i>
+	                                            </span>
+						<span>Iniciar Sesion</span>
+						</a>
+						</span>
+	
+						<span class="navbar-item">
+	                                        <a class="button is-white is-outlined" v-on:click="toRegister()" href="#">
+	                                            <span class="icon">
+	                                                <i class="fas fa-sign-in-alt"></i>
+	                                            </span>
+						<span>Registrarse</span>
+						</a>
+						</span>
+					</div>
+				</div>
+			</div>
+		</nav>
 		<div class="hero-body">
 			<div class="container has-text-centered">
-				<div class="column is-4 is-offset-4">
-					<h3 class="title has-text-blue">Lenguaje de programacion orientado a objetos</h3>
-					<p class="subtitle has-text-blue">Por favor inicie sesion para continuar.</p>
-					<div class="box">
-						<figure class="image is-128x128">
-							<img class="center-block" src="https://www.uni.edu.pe/images/demo/logouni.png">
-						</figure>
-						<br>
-						<br>
-						<form>
-							<div class="field">
-								<div class="control">
-									<input class="input is-med" type="email" placeholder="Your Email" autofocus="">
-								</div>
-							</div>
-	
-							<div class="field">
-								<div class="control">
-									<input class="input is-med" type="password" placeholder="Your Password">
-								</div>
-							</div>
-						</form>
+				<div class="slider-content animated zoomIn">
+					<div>
+						<h1 class="title is-1 main-text">Sampieri</h1>
+						<p class="subtitle is-4 main-text">@sampieri</p>
 					</div>
-					<button class="button is-block is-info is-large is-fullwidth">Login</button>
-					
 				</div>
-				<p class="has-text-gray">
-					<a href="../">Registrarse</a> &nbsp;·&nbsp;
-	
-				</p>
 			</div>
 		</div>
-		</div>
+
+		<div class="hero-body">
+                        <div class="container has-text-centered">
+                            <div class="column is-6 is-offset-3">
+                                <h1 class="title">
+                                    Coming Soon
+                                </h1>
+                                <h2 class="subtitle">
+                                    $this is the best software platform for running an internet business. We handle billions of dollars every year for forward-thinking businesses around the world.
+                                </h2>
+                                <div class="box">
+                                    <div class="field is-grouped">
+                                        <p class="control is-expanded">
+                                            <input class="input" type="text" placeholder="Enter your email">
+                                        </p>
+                                        <p class="control">
+                                            <a class="button is-info">
+                                                Notify Me
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+	
 	</section>
 </template>
 
 
 <script>
 	export default {
-	
-	
 		methods: {
 			toLogin() {
 				let route = this.$router.resolve({

@@ -3,32 +3,33 @@
     <nav class="navbar">
       <div class="container">
         <div class="navbar-brand">
-          <a class="navbar-item" href="../">
-            <img src="img/logo.png" alt="Logo">
-          </a>
-          <span class="navbar-burger burger" data-target="navbarMenu"></span>
+  
+          <span class="navbar-burger burger" data-target="navbarMenu">
+                            <span></span>
+          <span></span>
+          <span></span>
+          </span>
         </div>
         <div id="navbarMenu" class="navbar-menu">
           <div class="navbar-end">
-            <a class="navbar-item is-active" v-on:click="sendReport()">Inicio</a>
-            <a class="navbar-item" v-on:click="sendReport()">Reportes</a>
-  
+            <a class="navbar-item is-active">
+                            Inicio
+                        </a>
+            <a class="navbar-item">
+                            Caracteristicas
+                        </a>
             <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">Cuenta</a>
+              <a class="navbar-link">
+                              Cuenta
+                          </a>
               <div class="navbar-dropdown">
-                <a class="nav-item" v-on:click="toProfile()">
-                  <span class="icon">
-                									<i class="fas fa-sign-in-alt"></i>
-                								</span>
-                  <span>Perfil</span>
-                </a>
+                <a class="navbar-item">
+                              Perfil
+                          </a>
                 <hr class="navbar-divider">
-                <a class="nav-item" v-on:click="toHome()">
-                  <span class="icon">
-                									<i class="fas fa-door-open"></i>
-                									</span>
-                  <span>Salir</span>
-                </a>
+                <div class="navbar-item">
+                  Cerrar Sesion
+                </div>
               </div>
             </div>
           </div>
@@ -36,56 +37,63 @@
       </div>
     </nav>
   
-    <div class="columns">
-      <div class="column">
-        <div class="card">
-          <header class="card-header">
-            <p class="card-header-title">
-              {{task.title}}
-            </p>
-            <a href="#" class="card-header-icon" aria-label="more options">
-              <span class="icon">
-                        <i class="fas fa-angle-down" aria-hidden="true"></i>
-                      </span>
-            </a>
-          </header>
-          <div class="card-content">
-            <div class="content">
-              {{userId}}
-              <a href="#">{{userId}}</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-              <br>
-              <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-            </div>
-          </div>
-          <footer class="card-footer">
-            <a href="#" class="card-footer-item">Save</a>
-            <a href="#" class="card-footer-item">Edit</a>
-            <a href="#" class="card-footer-item">Delete</a>
-          </footer>
+    <section class="hero is-info is-small">
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <p class="title">
+            Bienvenido "hi"
+          </p>
+  
         </div>
       </div>
+    </section>
   
-      <div class="container">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Task</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="task of tasks">
-              <td>{{user.firstname}}</td>
-              <td>{{user.lastname}}</td>
-              <td>
-                <button @click="deleteTask(task._id)" class="btn btn-danger">Delete</button>
-                <button @click="editTask(task._id)" class="btn btn-secondary">Edit</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="columns features">
+      <div class="column is-4">
+        <div class="card is-shady">
+          <div class="card-image">
+            <figure class="image is-1by1">
+              <img src="https://st2.depositphotos.com/1051392/8875/i/950/depositphotos_88752450-stock-photo-3d-person-showing-ok-sign.jpg" alt="Placeholder image" class="modal-button" data-target="modal-image2">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="content">
+              <h6>Nombres</h6>
+              <div class="field">
+                <div class="control">
+                  <h4> hi</h4>
+                </div>
+              </div>
+              <h6>Apellidos</h6>
+              <div class="field">
+                <div class="control">
+                  <h4> hi </h4>
+                </div>
+              </div>
+              <h6>Telefono</h6>
+              <div class="field">
+                <div class="control">
+                  <h4> hi </h4>
+                </div>
+              </div>
+              <h6>Numero de Tardanzas</h6>
+              <div class="field">
+                <div class="control">
+                  <h4> hi </h4>
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column">
+                  <span class="button is-link modal-button " data-target="modal-image2">Marcar Asistencia</span>
+                </div>
+                <div class="column">
+                  <span class="button is-link modal-button " data-target="modal-image2">Reporte</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-  
     </div>
   </section>
 </template>
@@ -106,7 +114,7 @@
         //
         //USER
         user: new User(),
-        userId:'',
+        userId: '',
         //Asistencias
       }
     },
