@@ -12,13 +12,13 @@ router.get('/', async(req, res) => { //Se usa async cuando una consulta puede to
 }); //.get Obtiene los datos de la base de datos
 
 
-router.post('/', async(req, res) => {
-    const userID = new UserSignUp(req.body); //Datos que el cliente envia
-    await userID.save(); //Almacena en la base de datos
-    res.json({
-        status: 'Tarea guardada'
-    });
-});
+// router.post('/', async(req, res) => {
+//     const userID = new UserSignUp(req.body); //Datos que el cliente envia
+//     await userID.save(); //Almacena en la base de datos
+//     res.json({
+//         status: 'Tarea guardada'
+//     });
+// });
 
 router.put('/:id', async(req, res) => {
     await UserSignUp.findByIdAndUpdate(req.params.id, req.body); //Id, datos actuales
