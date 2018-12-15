@@ -1,6 +1,6 @@
 <template>
 	<section class="hero is-fullheight" style="background: url('./img/office.jpg')">
-		
+		<h1></h1>
 		<nav class="navbar">
 			<div class="container">
 				<div class="navbar-brand">
