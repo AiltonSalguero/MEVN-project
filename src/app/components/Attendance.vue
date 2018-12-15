@@ -37,7 +37,7 @@
     </nav>
   
     <div class="columns">
-      <div class="column is-one-third">
+      <div class="column">
         <div class="card">
           <header class="card-header">
             <p class="card-header-title">
@@ -92,6 +92,7 @@
 
 <script>
   import Task from '../../models/classes/Task.js';
+  import User from '../../models/classes/User.js';
 
   export default {
     data() {
@@ -104,7 +105,7 @@
         //
 
         //USER
-        //user: new User()
+        user: new User(),
 
 
         //Asistencias

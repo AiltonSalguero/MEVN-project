@@ -12,22 +12,24 @@
                         <form>
                             <div class="field">
                                 <div class="control">
-                                    <input class="input is-large" type="email" placeholder="Your Email" autofocus="">
+                                    <!--model-->
+                                    <input v-model="user.email" class="input is-large" type="email" placeholder="Your Email" autofocus="">
                                 </div>
                             </div>
     
                             <div class="field">
                                 <div class="control">
-                                    <input class="input is-large" type="password" placeholder="Your Password">
+                                    <!--model-->
+                                    <input v-model="user.password" class="input is-large" type="password" placeholder="Your Password">
                                 </div>
                             </div>
                             <div class="field">
                                 <label class="checkbox">
-                      <input type="checkbox">
-                      Remember me
-                    </label>
+                                                              <input type="checkbox">
+                                                              Remember me
+                                                            </label>
                             </div>
-                            <button class="button is-block is-info is-large is-fullwidth" v-on:click="toAttendance()">Login</button>
+                            <button class="button is-block is-info is-large is-fullwidth" v-on:click="validUser(user.email, user.password)">Login</button>
                         </form>
                     </div>
                     <p class="has-text-grey">
@@ -42,26 +44,70 @@
 </template>
 
 <script>
+    import Task from '../../models/classes/Task.js';
+    import User from '../../models/classes/User.js';
     export default {
         name: 'Login',
         data() {
             return {
-                title: 'Login'
+                title: 'Login',
+                users: [],
+                user: new User(),
+    
+    
             }
         },
-
+        created() {
+            this.getUsers();
+        },
+    
         methods: {
-            toAttendance(){
-                let route = this.$router.resolve({
-					path: '/attendance'
-				});
-				// let route = this.$router.resolve('/link/to/page'); // This also works.
-				window.open(route.href, '_blank');
+            getUsers() {
+                fetch('/api/users')
+                    .then(res => res.json())
+                    .then(data => {
+                        this.users = data;
+                    });
+            },
+            validUser(email, password) {
+                fetch('/api/users')
+                    .then(res => res.json())
+                    .then(data => {
+                        this.users = data;
+                        //console.log(this.users.find(user => user.email == email))
+                        //let idUsuario = this.users.find(user => user.email == email)._id;
+    
+                        var found = this.users.find(function(element) {
+                            return element.email == 'ailton@hotmail.com';
+                        });
+                        console.log('f',found)
+    
+                        fetch('/api/users', {
+                            method: 'PUT',
+                            body: JSON.stringify({
+                                email: email,
+                                password: password
+                            })
+                        })
+                        //console.log(idUsuario)
+                    });
+                //this.getUsers();
+            },
+            toAttendance() {
+                if (this.validUser()) {
+                    let route = this.$router.resolve({
+                        path: '/attendance'
+                    });
+                    window.open(route.href, '_blank');
+                } else {
+    
+                }
+    
             }
         }
     }
 </script>
 
 <style src="./../../public/css/login.css">
-	
+    
 </style>

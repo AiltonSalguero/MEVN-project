@@ -8,7 +8,7 @@ const { mongoose } = require('./database'); //Cuando se colocan las llaves, se e
 const app = express();
 
 //Settings
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 7070);
 app.set('views', path.join(__dirname, '/views'));
 
 

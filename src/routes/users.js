@@ -5,6 +5,12 @@ const User = require('../models/User');
 
 //Acciones en la base de datos
 router.get('/', async(req, res) => { //Se usa async cuando una consulta puede tomar algo de tiempo
+    // const users = await User.find(); //Con await se declara dicha consulta
+    // res.json(users.map(user => ({
+    //     _id: user._id,
+    //     firstname: user.firstname
+    // }))); //.find busca todos los documentos que tenemos en mongodb 
+
     const users = await User.find(); //Con await se declara dicha consulta
     console.log(users);
     res.json(users); //.find busca todos los documentos que tenemos en mongodb 
@@ -25,9 +31,19 @@ router.post('/', async(req, res) => {
     });
 }); //.post Crea un nuevo dato
 
-router.put('/:id', async(req, res) => {
-    await User.findByIdAndUpdate(req.params.id, req.body); //Id, datos actuales
-    res.json({ status: 'Tarea actualizada' })
+router.put('/', async(req, res) => {
+    //await User.findByIdAndUpdate(req.params.id, req.body); //Id, datos actuales
+    //res.json({ status: 'Tarea actualizada' })
+    var user = await User.findOne({
+        email: req.body.email,
+        password: req.body.password,
+    }, function(err, user) {
+        console.log('Error: ' + err, user);
+    })
+
+    if (user != null) {
+        console.log(req.body.email)
+    }
 
 }); //.put actualiza los datos
 
