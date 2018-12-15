@@ -23,19 +23,12 @@
                                     <input v-model="user.password" class="input is-large" type="password" placeholder="Your Password">
                                 </div>
                             </div>
-                            <div class="field">
-                                <label class="checkbox">
-                                                                              <input type="checkbox">
-                                                                              Remember me
-                                                                            </label>
-                            </div>
                             <button class="button is-block is-info is-large is-fullwidth" v-on:click="validUser(user.email, user.password)">Login</button>
                         </form>
                     </div>
-                    <p class="has-text-grey">
-                        <a href="../">Sign Up</a> &nbsp;·&nbsp;
-                        <a href="../">Forgot Password</a> &nbsp;·&nbsp;
-                        <a href="../">Need Help?</a>
+                     <p class="has-text-gray">
+                        <a v-on:click="toRegister()">Registrarse</a> &nbsp;·&nbsp;
+                        
                     </p>
                 </div>
             </div>
@@ -63,6 +56,13 @@
         },
     
         methods: {
+
+            toRegister(){
+                let route = this.$router.resolve({
+                    path: '/register'
+                });
+                window.open(route.href, '_blank');
+            },
             validUser(email, password) {
                 fetch('/api/users')
                     .then(res => res.json())
