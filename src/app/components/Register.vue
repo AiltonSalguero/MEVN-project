@@ -47,8 +47,8 @@
                                             <div>
                                                 <input v-model="user.email" v-validate="'required|email'" name="email" data-vv-as="Email" :class="{'input is-primary': true, 'is-danger': errors.has('email') }" type="email" placeholder="example@hotmail.com">
                                                 <span class="icon is-small is-right">
-                                                                                <i v-if="errors.has('email')" class="material-icons">warning</i>
-                                                                            </span>
+                                                                                    <i v-if="errors.has('email')" class="material-icons">warning</i>
+                                                                                </span>
                                             </div>
                                             <span v-if="errors.has('email')" class="help is-danger">{{ errors.first('email') }}</span>
                                         </div>
@@ -56,13 +56,13 @@
                                             <label class="label">Genero</label>
                                             <form>
                                                 <label class="custom-radio">Masculino
-                                                                        <input v-model="user.gender" value="Masculino" type="radio" checked="checked" name="radio">
-                                                                        <span class="checkmark"></span>
-                                                                      </label>
+                                                                            <input v-model="user.gender" value="Masculino" type="radio" checked="checked" name="radio">
+                                                                            <span class="checkmark"></span>
+                                                                          </label>
                                                 <label class="custom-radio">Femenino
-                                                                        <input v-model="user.gender" value="Femenino" type="radio" name="radio">
-                                                                        <span class="checkmark"></span>
-                                                                      </label>
+                                                                            <input v-model="user.gender" value="Femenino" type="radio" name="radio">
+                                                                            <span class="checkmark"></span>
+                                                                          </label>
                                             </form>
                                         </div>
                                         <div class="field">
@@ -76,17 +76,17 @@
                                             <label class="label">Cargo</label>
                                             <div class="control gender-container">
                                                 <label class="custom-radio">Administrativo
-                                                                        <input v-model="user.job" id="Administrativo" type="radio" checked="checked" name="radio">
-                                                                        <span class="checkmark"></span>
-                                                                      </label>
+                                                                            <input v-model="user.job" id="Administrativo" type="radio" checked="checked" name="radio">
+                                                                            <span class="checkmark"></span>
+                                                                          </label>
                                                 <label class="custom-radio">Operativo
-                                                                        <input v-model="user.job" id="Operativo" type="radio" name="radio">
-                                                                        <span class="checkmark"></span>
-                                                                      </label>
+                                                                            <input v-model="user.job" id="Operativo" type="radio" name="radio">
+                                                                            <span class="checkmark"></span>
+                                                                          </label>
                                                 <label class="custom-radio">Consultor
-                                                                        <input v-model="user.job" id="Consultor" type="radio" name="radio">
-                                                                        <span class="checkmark"></span>
-                                                                      </label>
+                                                                            <input v-model="user.job" id="Consultor" type="radio" name="radio">
+                                                                            <span class="checkmark"></span>
+                                                                          </label>
                                             </div>
                                         </form>
                                     </div>
@@ -126,16 +126,18 @@
             }
         },
         methods: {
+            
             validateBeforeSubmit() {
                 this.$validator.validateAll().then((result) => {
                     if (result) {
                         // eslint-disable-next-line
                         alert('Usuario registrado!');
                         let route = this.$router.resolve({
-                            path: '/attendance'
+                            path: '/'
                         });
                         // let route = this.$router.resolve('/link/to/page'); // This also works.
                         window.open(route.href, '_blank');
+    
                         this.registerUser();
                     }
                     alert('Complete los campos');

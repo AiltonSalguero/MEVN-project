@@ -19,6 +19,7 @@ app.use(express.json()); //comprueba si es un formato json
 //Routes - urls
 app.use('/api/tasks', require('./routes/tasks.js')); //La primera parte es la ruta
 app.use('/api/users', require('./routes/users.js'));
+app.use('/api/usersignup', require('./routes/userSignUp.js'));
 
 
 //Static files

@@ -26,9 +26,9 @@
                             <button class="button is-block is-info is-large is-fullwidth" v-on:click="validUser(user.email, user.password)">Login</button>
                         </form>
                     </div>
-                     <p class="has-text-gray">
+                    <p class="has-text-gray">
                         <a v-on:click="toRegister()">Registrarse</a> &nbsp;·&nbsp;
-                        
+    
                     </p>
                 </div>
             </div>
@@ -40,6 +40,8 @@
     import Task from '../../models/classes/Task.js';
     import User from '../../models/classes/User.js';
     import Register from './Register.vue'
+    import UserSignUp from '../../models/classes/UserSignUp.js';
+    
     
     export default {
         name: 'Login',
@@ -48,16 +50,14 @@
                 title: 'Login',
                 users: [],
                 user: new User(),
+                userSign: new UserSignUp(""),
             }
         },
-    
-        components: {
-            appRegister: Register,
-        },
+        
     
         methods: {
-
-            toRegister(){
+            
+            toRegister() {
                 let route = this.$router.resolve({
                     path: '/register'
                 });
@@ -75,9 +75,8 @@
                             return element.email == email && element.password == password;
                         });
                         if (found != null) {
-                            this.userId = found.id;
+                            this.setUserId(found._id)
                             this.toAttendance()
-    
                         } else {
                             alert("Usuario no valido.")
                         }
@@ -92,6 +91,16 @@
                 });
                 window.open(route.href, '_blank');
     
+            },
+            setUserId(newId) {
+                fetch('/api/usersignup/5c14c69ece4ac334d6b62250', {
+                    method: 'PUT',
+                    body: JSON.stringify(new UserSignUp(newId)),
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                })
             }
         }
     }
